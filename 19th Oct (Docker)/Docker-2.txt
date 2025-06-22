@@ -1,0 +1,129 @@
+---------------------------------------------------------------
+	
+How to create , build and push custome images in docker  ?
+ 
+	vi Dockerfile
+
+		OR
+
+	vi mydockerfile 
+-----------------------------------------------------------------
+
+Tomcat server deploy  
+
+  - application server 
+  - 8080 
+  - Java based server 
+  
+  OpenJDK (Opensource)  vs ORACLE-Sun Java (paid)
+		JVM 				 Support +  JVM 
+		
+Tip: 
+			find /  -name java-17*
+
+			find /  -iname java-17*
+
+			find /  type  l
+			
+			find /  -perm  775 
+			
+			find /  -size +10K
+			
+vi .bash_profile
+
+export JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64
+
+Save and exit 
+
+source  .bash_profile
+
+cd /opt/apache-tomcat-9.0.85/
+
+sh  catalina.sh
+---------------------------------
+Test our ports opened ? ( 8080 )
+
+	netstat  -plant
+--------------------------------------------
+vi Dockerfile 
+
+	FROM  -->  PULL  (Essential layer)
+	
+	MAINTAINER -->   (optional)
+	
+	RUN  -->  Image related OS commands can be execute by this paramater / clause  
+	
+	ADD  -->  COPY and Extract tar file / zip in Linux 
+	
+	WORKDIR  -->  Set default home location when we login into container. 
+					/opt/apache-tomcat-8.5/bin/ 
+	
+	CMD -->   We can run deamon (Background process) with arguments and it can be overide.
+
+	ENTRYPOINT  -->
+	
+	
+	RUN  vs  CMD   vs ENTRYPOINT  
+	
+		CMD	[]  -->  Executable form 
+			
+		RUN mkdir aa -->  Shell form 	
+--------------------------------------------------------
+Build custom dockerfile 
+
+	docker build -t newtomcat:v1 -f dockerfile123 .
+
+------------------------------------
+
+get / know you public ip ?
+	
+		 curl ifconfig.io
+--------------------------------------
+
+build and push on DH 
+
+	 docker images 
+	 
+	 docker ps -a  
+	 
+	 docker tag  93e6e323dd0b cdtsbikaner/devopstg13jan2024:v1
+					IMAGE-ID
+					
+	docker container commit  dc512cf839ae cdtsbikaner/devopstg13jan2024:v1
+								  Container-ID
+								  
+	docker login
+	
+	docker image push cdtsbikaner/devopstg13jan2024:v1
+
+------------------------------------------------------------------
+FROM centos:7
+
+MAINTAINER "info@tg.com"
+
+RUN  yum install java-devel net-tool netstat vim bind-utils -y
+
+ADD  apache-tomcat-8.5.98.tar.gz /opt
+
+WORKDIR /opt/apache-tomcat-8.5.98/bin
+
+EXPOSE 8080 8081 443 8085
+
+CMD ["/opt/apache-tomcat-8.5.98/bin/catalina.sh","run"]
+
+	
+------------------------------------------------------------------
+
+docker pull cdtsbikaner/devopstg13jan2024:v1
+
+-----------------------------------------------------------------  
+
+Web server deploy
+ 
+Mariadb / mysql 
+
+Apache2 on ubuntu 
+
+NodeJS with mongoDB
+
+-----------------------------------------------------------------

@@ -1,0 +1,177 @@
+install :
+CE (Community edition) :
+	(LINUX)
+-------------------------------------	
+redhat / centos / fedora 
+	
+	yum install docker -y
+
+ubuntu 
+	apt-get install docker -y
+
+systemctl  start docker
+
+systemctl  enable  docker
+	
+systemctl status  docker
+-----------------------------------
+basic docker commands :
+
+	nice  -->   -20 to +19 
+				
+New process:
+				
+	nice -n 10  apache
+	
+Renice :
+		
+	renice -n -20 dockerd 
+--------------------------------------
+docker info | grep overlay
+
+
+XFS  (Centos / Amazon / rhel / fedora )  -->  Storage Driver: overlay2
+
+BRTFS / AUFS --> OverlayFS   
+---------------------------------------
+
+overlay --> network adaptor 
+
+----------------------------------------
+
+Docker home  ?
+	
+	/var/lib/docker 
+
+overlay2 :
+		
+		/var/lib/docker/overlay2/
+		
+-----------------------------------------
+docker info 
+
+docker login
+
+
+docker pull nginx
+
+docker pull mysql 
+
+docker pull ubuntu:20.04
+
+------------------------------------------
+docker pull ubuntu
+
+docker images 
+
+docker rmi ubuntu 
+
+-------------------------------------------
+
+open duplicate terminal of current session and run following command: 
+
+	cd /var/lib/docker/overlay2
+
+	watch -n1  ls -ltr
+	 
+Now login to new session :
+
+	docker pull centos 
+	
+Note: need to check in screen 1 where you can see downloading / pull layers of the Docker image from Docker hub. (layer architechture)
+
+	Now again test with delete / rmi  images
+------------------------------------------------------	
+
+	docker images 
+	
+How to delete docker pulled image 
+	
+	docker rmi  <DOCKER-IMAGE-NAME>
+	 
+	Now you can watch in screen 1 where all the downloaded layers of image is deleting ...
+-------------------------------------------------------
+
+docker pull ubuntu
+
+docker images 
+
+docker run --name c1 -dit <DOCKER-IMAGE-ID/NAME>
+
+		-d  -> deattachble mode (backgroud)
+		-i -> intractive
+		-t -> terminal 
+
+docker ps -a
+
+Now login / test your container ?
+
+	docker exec -ti <CONTAINER-ID/NAME>   bash
+
+-------------------------------------------------
+
+docker stop  <CONTAINER-ID/NAME>
+
+docker restart <CONTAINER-ID/NAME>
+
+docker start  <CONTAINER-ID/NAME>
+
+docker rm  -f  <CONTAINER-ID/NAME>
+
+docker ps -a
+
+Kill all containers (RUnnning  + Stopped + Exited)
+
+	docker rm -f  $(docker ps -aq)
+----------------------------------------------
+ docker network ls
+
+ docker volume ls 
+----------------------------------------------- 
+ docker inspect CONTAINER-NAME 
+ 
+
+-----------------------------------------------
+
+bridge apapdater driver is default driver when we install Docker.
+
+docker network ls 
+
+docker inspect network bridge 
+
+		ifconfig  
+		
+				docker0  --> Bridge driver of docker 
+					- veth0
+				
+				
+				eth0
+				
+				lo
+				
+docker inspect  <CONTAINER-ID/NAME> | tail -30
+		
+
+--------------------------------------------------------------
+Additonal tip for custom / install packages thru yum / dnf in centos  / rhel / fedora / amazon 
+
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*	
+
+--------------------------------------------------------------
+
+how to read logs of running container ?
+
+	docker logs  -f  <ContainerID/ Container-name> 
+	
+	
+---------------------------------------------------------------
+	
+How to create , build and push custome images in docker  ?
+ 
+	vi Dockerfile
+
+		OR
+
+	vi mydockerfile 

@@ -1,0 +1,254 @@
+					      ### INDEXES ###
+				         ----------------------------
+
+-> INDEXES THROUGH FETCH THE DATA FASTLY.
+-> An index helps speed up SELECT queries and WHERE clauses, but it slows down data input,
+   with UPDATE and INSERT statements. Indexes can be created or dropped with no effect on
+   the data.
+-> IF WE WILL DROP THE INDEXES, IT WILL NOT EFFECT ON THE TABLE.
+
+
+	The CREATE INDEX Command:
+
+CREATE INDEX index_EID ON table_EID (column_EID);
+
+	Composite Indexes:
+
+CREATE INDEX index_EID on table_EID (column1, column2);
+
+Implicit Indexes: Implicit indexes are indexes that are automatically created by the
+database server when an object is created. Indexes are automatically created for primary
+key constraints and unique constraints.
+
+DROP INDEX Command:
+
+DROP INDEX index_EID ON table_EID;
+
+
+			EXAMPLE :-
+                      ---------------
+
+CREATE INDEX L2315 ON EMP (CITY)
+
+SELECT * FROM EMP
+WHERE CITY='DEL'
+
+CREATE INDEXES L35712 ON EMP (CITY,ADDR)
+
+SELECT * FROM EMP
+WHERE CITY='DEL' AND ADDR='DELHI'
+
+DROP INDEX L35712 ON EMP; -- IF WE WILL DROP THE COLUMN, IT WILL NOT EFFECT ON TABLE.
+
+
+
+
+							
+								 ##### VIEWS #####
+					          ------------------------------------------------
+
+-> VIEWS ARE THE VIRTUAL TABLE.
+
+-> 	Views which are kind of virtual tables, allow users to do the following:
+
+	Structure data in a way that users or classes of users find natural or intuitive.
+	Restrict access to the data such that a user can see and (sometimes) modify
+	  exactly what they need and no more.
+	Summarize data from various tables which can be used to generate reports.
+
+
+CREATE VIEW view_EID AS
+(SELECT column1, column2.....
+FROM table_EID
+WHERE [condition]
+);
+
+
+			  EXAMPLE :-
+                     ---------------------
+
+CREATE VIEW L3631 
+AS
+SELECT * FROM EMP
+WHERE CITY='PUNE'
+
+
+-> THROUGH VIEW WE CAN GIVE THE ACCESS FOR SPECIFIC CITY EMPLOYEE OR SPECIFIC EMAIL EMPLOYEE ETC.
+-> HERE IN EXAMPLE WE ARE ABLE TO GIVE THE ACCESS WHO BELONGS FROM PUNE CITY, AND WE ARE RESTRICTED THE EMPLOYEE WHO BELONGS FROM OTHER CITY.
+-> ->THROUGH EMP ANYONE CAN ACCESS THE DATA WHO BELONGS FROM PUNE,DELHI,MUMBAI ETC.
+
+	SELECT * FROM L3631
+
+-> IF WE RUN THE (SELECT * FROM L3631) QUERY,IT WILL GIVE PUNE CITY EMPLOYEE DEATIL, WE HAVE RESTRICTED THE OTHER CITY EMPLOYEE DETAIL.
+
+
+	INSERT INTO EMP VALUES(1005,''SS,'HARYANA','PUNE','97234987','SS@GMAIL.COM','11-10-2000') 
+
+-> WE HAVE CRETED THE VIEW FIRST THEN INSERTED THE RECORD,AFTER IF RUN ( SELECT * FROM L3631 ) QUERY IT WILL GIVE THE LATEST DATA  MEANS INSERTED ROW ALSO,BECAUSE ITS A VIRTUAL TABLE.
+
+	
+	DELETE FROM EMP WHERE EID=1001
+
+-> IF WE RUN (SELECT * FROM L3631) MEANS WILL DELETE THE DATA FROM VIEW TABLE ALSO BECAUSE VIEW IS A VIRTUAL TABLE IT WILL GIVE LATEST OUTPUT.
+
+
+	DELETE FROM L3631 WHERE EID=1004
+
+-> IF WE RUN (SELECT * FROM EMP) MEANS WILL DELETE THE DATA FROM EMP TABLE ALSO BECAUSE VIEW IS A VIRTUAL TABLE IT WILL GIVE LATEST OUTPUT.
+
+
+	INSERT INTO EMP VALUES(1005,''SS,'HARYANA','BANGALORE','97234987','SS@GMAIL.COM','11-10-2000') 
+
+-> IF WE RUN (SELECT * FROM L3631), IT WILL NOT GIVE THE NEWLY ADDED DATA BECAUSE WE ARE FETCHING THE DATA WHO BELONGS FROM PUNE, NOT BELONGS FROM OTHER    CITY(HERE WE ARE INSERTING THE CITY BANGALORE).
+
+
+	CREATE INTO L36V2
+	AS
+	SELECT EID,NAME,CITY,PHNO,EMAIL
+	FROM EMP;
+
+	SELECT * FROM L36V2
+
+-> THROUGH THIS QUERY ADDRESS AND DATE OF BIRTH IS HIDE, EMPLOYEE CAN NOT ACCESS ADDRESS AND DATE OF BIRTH WHICH IS CONFIDENTIAL INFORMATION
+-> Restrict access to the data such that a user can see and (sometimes) modify
+     exactly what they need and no more.
+
+
+	SELECT EMP.EID,NAME,CITY,DOB,DEPT,DESI,SALARY AS 'BASIC',SALARY*.09 AS 'PF',SALARY*.15 AS 'HRA'
+	FROM EMP
+	INNER JOIN EMP_SAL
+	ON EMP.EID=EMP_SAL.EID
+
+-> ASSUME THAT THIS IS MY FREQUENT REQUIREMENT, WE NEED TO EID,NAME,CITY,DOB,DEPT,DESI SALARY MORE AND MORE TIME, WE CAN NOT WRITE EVERY TIME THIS LONGER  QUERY FOR GETTING THIS EMPLOYEE DATA, SO WE USE VIEW.
+
+
+	CREATE VIEW L36VSUAL
+	AS
+	SELECT EMP.EID,NAME,CITY,DOB,DEPT,DESI,SALARY AS 'BASIC',SALARY*.09 AS 'PF',SALARY*.15 AS 'HRA'
+	FROM EMP
+	INNER JOIN EMP_SAL
+	ON EMP.EID=EMP_SAL.EID
+
+
+-> NOW NO NEED TO WRITE ENTIRE QUERY FOR GETTING THE EMPLOYEE SALARY DETAIL THROUGH VIEW (SELECT * FROM L36VSUAL ) WE CAN GET EMPLOYEE SALARY DETAIL. 
+-> Summarize data from various tables which can be used to generate reports.
+
+
+
+
+				   	 ## WITH CHECK OPTION ##
+			              -----------------------------
+
+-> The WITH CHECK OPTION is a CREATE VIEW statement option. The purpose of the WITH
+CHECK OPTION is to ensure that all UPDATE and INSERTs satisfy the condition(s) in the view
+definition.
+
+CREATE VIEW view_EID AS
+SELECT column1, column2.....
+FROM table_EID
+WHERE [condition]
+WITH CHECK OPTION;
+
+
+		EXAMPLE :-
+              --------------
+-> WITH CHECK OPTION IS NOTHING, IT WILL CHECK THE DATA ACCORDING TO CONDITION, IF CONDITION WILL NOT MATCH THEN IT WILL THORW ERROR.
+
+CREATE VIEW L3631
+AS
+SELECT * FROM EMP
+WHERE CITY = 'PUNE'
+WITH CHECK OPTION;
+
+-> IN QUERY WE HAVE WRITE WITH CHECK OPTION, NOW MY VIEW IS ONLY WORKING FOR THE PUNE EMPLOYEE
+
+
+	INSERT INTO L3631 VALUES(1011,'JOHN','BIHAR','PUNE','452138989','JH@GMAIL.COM','10-08,1999')
+
+-> HERE IT WILL INSERT NOT THROW ERROR BECAUSE WE ARE INSERTING THE DATA WHERE CITY IS PUNE ACCORDING TO VIEW( L3631 ) CONDITION.
+
+
+	INSERT INTO L3631 VALUES(1012,'JOHN','BIHAR','BANGALORE','452138989','JH@GMAIL.COM','10-08,1999')
+
+-> HERE IT WILL NOT INSERT, IT WILL THROW ERROR BECAUSE WE ARE INSERTING THE DATA WHERE CITY IS BANGALORE IT IS NOT MATCHING ACCORDING TO VIEW( L3631 ) CONDITION.
+
+
+
+
+					## UPDATING A VIEWS ##
+				    --------------------------------
+
+ 			A view can be updated under certain conditions:
+
+
+-> The SELECT clause may not contain the keyword DISTINCT.
+
+	SELECT DISTINCT CITY FROM EMP  --> WE CAN NOT CREATE FOR THIS
+
+-> The SELECT clause may not contain summary functions.
+
+	SELECT COUNT(EID) AS 'NO OF NUMBERS' FROM EMP  --> WE CAN NOT CREATE VIRW FOR THIS
+
+-> The SELECT clause may not contain set operators.	
+-> The FROM clause may not contain multiple tables.	
+-> The query may not contain GROUP BY or HAVING.
+
+	SELECT DEPT,SUM(SALARY) AS 'TC' FROM EMP GROUP BY DEPT  --> CAN NOT CREATE VIEW
+
+-> Calculated columns may not be updated.
+-> All NOT NULL columns from the base table must be included in the view in order for the INSERT query to function.
+-> The SELECT clause may not contain an ORDER BY clause.
+
+	SELECT * FROM EMP WHERE DEPT = 'HR' ORDER BY SALARY DESC --> CAN NOT CREATE VIEW
+
+
+
+
+					######  SQL HAVING CLAUSE  ######
+				  -------------------------------------------------
+
+
+The HAVING clause enables we to specify conditions that filter which group
+results appear in the final results
+
+The WHERE clause places conditions on the selected columns, whereas the
+HAVING clause places conditions on groups created by the GROUP BY clause
+
+The following is the position of the HAVING clause in a query
+
+SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+
+
+
+The HAVING clause must follow the GROUP BY clause in a query and must
+also precede the ORDER BY clause if used.
+The following is the syntax of the SELECT statement, including the HAVING
+clause:
+
+SELECT column1, column2
+FROM table1, table2
+WHERE [ conditions ]
+GROUP BY column1, column2
+HAVING [ conditions ]
+ORDER BY column1, column2
+
+   
+
+
+
+			
+
+
+
+
+
+
+
+
+
+

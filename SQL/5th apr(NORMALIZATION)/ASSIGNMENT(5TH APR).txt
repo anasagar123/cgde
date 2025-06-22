@@ -1,0 +1,128 @@
+			ASSIGNMENT - 2 :
+                  -------------------------
+Q. In the DEMO database create table EMP _SAL with the following fields:
+   • EID DEPT DESI DOJ SALARY
+   • Insert 7 appropriate records in the EMP _SAL table
+   • Use SELECT command to view the contents of EMP _SAL table
+
+ANS :-
+
+CREATE DATABASE DEMP;
+
+CREATE TABLE EMP_SAL
+(EID INT,
+DEPT VARCHAR(10),
+DESI VARCHAR(15),
+DOJ  VARCHAR(20),
+SALARY INT)
+
+INSERT INTO EMP_SAL
+    VALUES(1001,'IT','ANALYST','02-08,2021',5000)
+    
+INSERT INTO EMP_SAL
+VALUES(1002,'DS','SR ANALYST','11-09-2021',9000)
+
+INSERT INTO EMP_SAL
+VALUES(1003,'CIVIL','CONSULTANT','22-10-201',12000)
+
+INSERT INTO EMP_SAL
+VALUES(1004,'MECH','ASSOCIATE','25-11-2022',15000)
+
+INSERT INTO EMP_SAL
+VALUES(1005,'ML','MANAGER','26-03-2023',18000)
+
+INSERT INTO EMP_SAL
+VALUES(1006,'AI','SR MANAGER','16-05-2023',21000)
+
+INSERT INTO EMP_SAL
+VALUES(1007,'EEE','DIRECTOR','18-08-2023',23000)
+
+
+Q. From the EMP table list all the employees with last name as Sharma.
+
+ANS :-
+
+SELECT * FROM EMP_SAL
+
+Q. Increase the salary of all Managers by 10%.
+
+ANS :-
+
+UPDATE EMP_SAL 
+SET SALARY=SALARY+SALARY*0.2 
+WHERE DESI LIKE '%MANAGER%'  
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+								ASSIGNMENT - 3
+             						   ---------------------------
+
+
+Q. CREATE TWO TABLES EMP AS PER THE BELOW STRUCTURE:
+
+	Field EID 			Constraints
+
+	EMPID 				Primary Key
+	NAME 				NOT NULL
+	ADDR 				No employee from UTTAM NAGAR
+	CITY 				DEL, GGN, FBD, NOIDA
+	PHNO 				UNIQUE
+	EMAIL				Should be on Gmail / Yahoo Domain
+	DOB 				<= '1-Jan-2000'
+
+ANS :-
+
+CREATE TABLE EMP1(
+    EMPID INT PRIMARY KEY,
+    NAME VARCHAR(15) NOT NULL,
+    ADDR VARCHAR(20) NOT NULL CHECK (ADDR NOT LIKE '%UTTAM NAGAR%'),
+    CITY VARCHAR(15) CHECK (CITY IN ('DEL','GGN','FBD','NOIDA')),
+    PHNO VARCHAR(10) UNIQUE,
+    EMAIL VARCHAR(20) CHECK (EMAIL LIKE '%GMAIL.COM' OR EMAIL LIKE '%YAHOO.COM'),
+    DOB VARCHAR(15) CHECK (DOB <='1-JAN-2000')   
+)
+
+INSERT INTO EMP1
+    VALUES(1001,'JOHN','DELHI','DEL','45678989','JH@GMAIL.COM','02-08,1999')
+
+SELECT * FROM EMP1
+    
+INSERT INTO EMP1
+    VALUES(1002,'TOM','UP','FBD','97523234','TOM@GMAIL.COM','01-08,1998')
+
+INSERT INTO EMP1
+    VALUES(1003,'BOB','HARYANA','GGN','9750987','BOB@GMAIL.COM','01-10-2000')
+
+INSERT INTO EMP1
+    VALUES(1004,'BOB','DELHI','NOIDA','975097290','BOB@YAHOO.COM','01-05-2000')
+    
+    
+    
+
+Q. CREATE TWO TABLES EMP_SAL AS PER THE BELOW STRUCTURE:
+
+	Field EID 			Constraints
+
+	EMPID 				Foreign Key
+	DEPT 				HR, MIS, OPS , IT ADMIN, TEMP
+	DESI 				ASSO, MGR, VP, DIR
+	BASIC 				>=20000
+	DOJ				 -
+
+		By default DEPT should be TEMP
+
+
+ANS :-
+
+
+CREATE TABLE EMP_SAL(
+    EMPID INT,
+    DEPT VARCHAR(15) DEFAULT 'TEMP' CHECK (DEPT IN ('HR','MIS','OPS','IT','ADMIN','TEMP')),
+    DESI VARCHAR(10) CHECK (DESI IN ('ASSO','MGR','VP','DIR')),
+    BASIC DECIMAL(10,2) CHECK (BASIC>=20000),
+    DOJ  DATE,
+    CONSTRAINT fkid FOREIGN KEY (EMPID) REFERENCES EMP(EMPID)
+)
+
+

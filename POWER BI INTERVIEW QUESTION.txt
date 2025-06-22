@@ -1,0 +1,55 @@
+						POWER BI
+                                       -----------------------------
+(i) WHAT IS DAX?
+--> Data AnalysisExpression(DAX) is a library of function and operators that can be combined to build calculation formula expression.
+
+(ii) WHEN WE USE DAX?
+---> Creating columns
+     Creating Tbale
+     Creating Measures
+
+(iii) HOW WOULD YOU RATE YOURSELF IN DAX?
+---> I can rate myself 7 out of 10 in Dax Function,I cant say i know every Dax function,bcoz Dax is a very vast filed,and 
+     its not easy to remember all Dax functions at a time.But i know the basic how we can implement the Dax,whenever it will 
+      required i can check that from google and implement that Dax in our power bi report.
+
+(iv) WHAT DAX FUNCTIONS HAVE YOU USED IN YOUR PREVIOUS PROJECT?
+----> Yes I have used so many dax function in my previous project,like REPLACE(),ROUND(),CALANDER(),ALL(),CALCULATE(),CALCULATETABLE(),FORMAT(),COUNT(),COUNTX().
+
+(V) DIFF BETWEEN SUM() AND SUMX() FUNCTIONS IN DAX?
+---> 
+(vi) DIFF BETWEEN MAX(),MAXA() AND MAXX() FUNCTIONS IN DAX?
+---->
+(Vii) DIFF BETWEEN AVERAGE(),AVERAGEA() AND AVERAGEX() FUNCTIONS IN DAX? 
+----->
+(IX) DIFF BETWEEN COUNT(),COUNTA(),COUNTX() AND COUNTAX() FUNCTIONS IN DAX?
+---->
+(X) DIFF BETWEEN GROUPBY() AND SUMMARIZE() FUNCTIONS IN DAX?
+---->
+(Xi) TOPN DAX FUNCTION?
+---->
+(Xii) ALL DAX FUNCTION?
+---->
+(Xiii) DAX ALLEXCEPT FUNCTION(FILTER)?
+----->
+(Xiv) DAX ALLSELECTED FUNCTION(FILTER)?
+--->
+(Xv) CALCULATE DAX FUNCTION?
+--->
+(Xvi) CALCULATE TABLE DAX FUNCTION?
+---->  
+(Xvii) CALANDER DAX FUNCTION?
+---->
+(Xix) CALANDERAUTO DAX FUNCTION?
+---->
+
+
+
+
+
+
+
+
+
+
+      

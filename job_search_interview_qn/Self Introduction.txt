@@ -1,0 +1,93 @@
+
+
+
+                -->I am anand sagar.
+		-->I am from Darbhanga Bihar.
+		-->I have completed my B.Tech from Radharaman institute of Technology 
+                   & science Bhopal in computer science..
+		-->I satarted my career with Capgemini as a Analyst, now i am having 3+ 
+                    years of experience in data science & Analytics.
+		-->I have strong skills in data preprocessing, model development and 
+                    building AI solutions.
+		-->over the years, i have built strong solutions for natural language processing 
+                   like sentiment analysis and chatbot development. i specialize in using models 
+                   like bert,gpt and fine-tuning like lora,qlora and peft to adapt large language 
+                   models for real-world applications.
+		-->i have also worked on retrival-augmentedgeneration(RAG) systems where i used 
+                     different type of LLMs models for building the chatbot.
+		-->my tech stack includes Python,machine learning,NLP,genai,sql,
+                   power bi and basic agentic ai.
+		--> i am currently exploring ways to build efficient,scalable GenAI pipelines 
+                    and always keep to learn and collaborate on impactful projects.
+
+
+
+
+
+
+
+
+
+
+
+
+Q.what is your salary expectation.
+ANS :
+		If you're unsure of the exact range:
+
+	---> “I’m open to negotiation and more interested in the role, responsibilities, and 
+               opportunities for growth. I trust the company will offer a fair package aligned 
+               with my experience and market standards.”
+
+	---> “Based on my experience, skills, and the current market standards, 
+              I’m expecting a salary in the range of ₹X–₹Y LPA. However, I’m open to 
+              discussion and more interested in finding the right role and team fit where 
+              I can contribute and grow.”
+
+Q. Why You Want 120% Hike?
+ANS :
+	i am requesting more hike from my current package because my current compensation no longer reflects 
+         my skills,contribution or current market standards.over the 3.3 years of experience i have significantly 
+         worked, particularly in high demand areas like generative ai,nlp and full lifecycle ml projects.
+
+Q. Why you want to change the company?
+ANS :
+	---> "I’ve learned a lot in my current role, but I feel ready for new challenges that 
+              align more closely with my long-term goals. I’m looking for opportunities to grow 
+              technically and take on more responsibility, especially in GenAI, large-scale 
+              ML systems, or real-time data processing. I’m seeking an environment that supports 
+              experimentation, innovation, and continuous learning."
+
+Q. why you want to join our company?
+ANS :
+	---> "I’m looking to grow in an environment where I can tackle complex problems 
+              and work with smart, passionate teams. Your company’s focus on continuous 
+              innovation and its culture of learning is exactly what I’m looking for at 
+              this stage in my career."
+
+Q. How do you handle pressure or tight deadlines?
+ANS :
+	---> "I handle pressure by staying focused, managing my time well, and 
+              collaborating with my team when needed. I believe clear communication 
+              and proper planning are key during tight deadlines."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

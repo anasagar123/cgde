@@ -1,0 +1,260 @@
+🔹 What is RAG?
+----> Rag is Retrival Augmented Generation,if i have a confidential data and i want to build a chatbot with confidential data, then i can go with rag.
+
+🔹 Why we are using RAG?
+----> because LLm has some problem like Limited knowledge and Hallucianation, thats why we are using RAG.
+
+🔹What are the key components of a RAG pipeline?
+-----> Ingestion, Retrival and Generation
+
+🔹How does RAG differ from fine-tuning an LLM?
+------> explain RAG and Fine tuning
+
+🔹 What are the advantages and limitations of RAG?
+-----> Advantage (solved hallucianation, Limited knowledge)
+       Disadvantage :-
+       (i)Dependence on Knowledge Base Quality - Performance depends heavily on the quality, relevance, and 
+                                                  completeness of the external knowledge base.
+
+       (ii) Not Suitable for Purely Generative Tasks - Struggles with creative or open-ended tasks that require 
+                                                       imagination or abstract reasoning rather than 
+                                                       factual retrieval(Eg. writing stories or generating artful content).
+ 
+
+🔹What are embeddings, and why are they important in RAG?
+----> Embeddings are dense vector representations of text, where similar words, phrases, or documents have 
+      similar numerical representations in a high- dimensional space. They help capture the semantic meaning 
+      of text rather than just keyword-based similarity.
+	✅ Capture semantic meaning beyond keywords
+	✅ Enable fast and efficient document retrieval
+	✅ Improve response accuracy and reduce hallucination
+	✅ Scale to large datasets with vector search (FAISS, Annoy, Milvus)
+
+🔹 What is the role of vector databases in RAG, and how do they store embeddings?
+ANS : Vector databases store embeddings as high-dimensional numerical vectors instead of raw text. 
+      These embeddings are indexed for fast retrieval.
+
+	✅ Enable semantic search → Retrieve documents based on meaning, not just keywords
+	✅ Optimize retrieval speed → Handles large-scale document search efficiently
+	✅ Reduce hallucination in LLMs → Provides relevant context for response generation
+	✅ Scale to billions of documents → Using FAISS, Pinecone, Weaviate, Milvus, ChromaDB
+
+🔹 What is the difference between dense and sparse retrieval in RAG?
+ANS : 	Key Differences: Sparse vs. Dense Retrieval
+
+	Feature			Sparse Retrieval (BM25, TF-IDF)			Dense Retrieval (Embeddings, FAISS,DPR)
+	Method			Keyword-based (Lexical)				Semantic-based (Embeddings)
+	Example			BM25, TF-IDF, Elasticsearch			FAISS, DPR, Sentence-BERT
+	Works with Synonyms?	❌ No (exact word match only)			✅ Yes (semantic similarity)
+	Training Required?	❌ No						✅ Yes (pre-trained embeddings)
+	Computation Speed	⚡ Fast for small data	🐢 			Slower but scalable for large data
+	Interpretability	✅ High (easy to explain)			❌ Harder to interpret embeddings
+	Best for		Small datasets, structured queries		Large-scale, complex queries
+
+🔹 Which vector databases are commonly used for RAG, and how do they compare? (FAISS, Chroma)
+
+ANS :        CHROMA DB								
+	--> ChromaDb is open source vector database optimized for managing embedding and semantic search.
+	--> support filtering,metadat storage, and real-time vector operations.
+	--> frequently used in LLM application for RAG.
+	--> it is locally storage.
+
+	    FAISS
+	--> It is open source library for efficient similarity search and clustering of dense vectors.
+	--> it can handling billions of vectors efficiently.
+	--> its a GPU accelerated.
+	--> Faiss is specially used for research purpose, recommendation systems, where billions of token is created.
+
+🔹 How does hybrid search (dense + sparse) improve retrieval quality in RAG?
+
+ANS :
+		Sparse Retrieval
+	--> Retrieves documents based on exact term matching using traditional search techniques like BM25, TF-IDF, and keyword search.
+	--> if i have Data with clear, specific keywords (e.g., legal documents, contracts, research papers)
+	--> Ideal for short, factual queries like "capital of France."
+
+		Dense Retrieval
+	--> Retrieves documents based on semantic similarity using vector embeddings from models 
+            like BERT, Sentence Transformers, OpenAI Embeddings.
+	--> if data will be Social media posts, customer support conversations, and product reviews.
+
+		Hybrid Retrieval (Dense + Sparse)
+	--> Combines both dense and sparse retrieval techniques to cover strengths and weaknesses.
+	--> if data will be E-commerce, legal tech, finance, and healthcare	
+
+🔹 What are some common techniques to reduce hallucinations in RAG?
+
+ANS :  i have to worked on retrival(Hybrid retrival), metadata filtering(chromadb), used Re-ranking technique(e.g., cross-encoders),
+       worked on prompt engineering, worked generative model(gpt,Llama).
+
+🔹 How do you optimize chunking strategies for better retrieval in RAG?
+ANS : i have to take best chunk_size and used chunk_overlap.
+
+🔹 What is re-ranking, and how does it improve retrieval relevance?
+ANS :   1️⃣ Retriever → Pulls top-10 or top-50 documents from a large corpus.
+	2️⃣ Re-ranker → Sorts and filters these documents to keep only the most relevant ones.
+	3️⃣ LLM → Uses the top-ranked documents to generate answers.
+	🔹 Without Re-ranking: LLM might get irrelevant, noisy, or lower-quality documents.
+	🔹 With Re-ranking: Only the most accurate, contextually relevant documents reach the LLM.
+
+🔹 How do you handle long-context retrieval in RAG with LLMs that have a limited token window?
+ANS : 
+		Break long documents into smaller chunks and retrieve selectively
+	--> Fixed-Size Chunking: Split the document into overlapping or non-overlapping chunks of manageable size (e.g., 300-500 tokens).
+	--> worked on chunk_overlap
+	--> Context-Aware Chunking: Split based on semantic boundaries (e.g., paragraphs, sections) rather than fixed length.
+
+🔹  HUGGINGFace?
+
+ANS : 		
+	--> HuggingFace is a company and a community of opensource ML Projects most famous for NLP.
+	--> HuggingFace is a transformer-based-model and tools.
+	--> It Provides state-of-the art pre-trained models and ecosystem for NLP, computer vision and other AI Application.
+	--> HuggingFace pipeline is a high level API to apply pre-trained models for various NLP 
+            Task (such as sentiment analysis, question-answering and text summarization.
+
+	--> same thingi want to do in nlp then,i have to work on tokenization,text-preprocessing(like 
+            remove the white space, convert into a lower letter etc), apply stemming or lemmatization on 
+            the top of it use any ml or dl technique(word2vec,tf-idf) for text to number then i have to build the model. 
+
+          Example:
+			!pip install transformers
+			!pip install datasets
+
+			import pandas as pd
+			from transformers import pipeline
+			from datasets import load_dataset
+
+		Email = ---------
+		Classifier = pipeline(task="text-classification")
+		Classifier(Email)
+		Output = +ve, score:0.99
+
+
+🔹 	Langchain ?
+
+ANS :
+	--> LangChain is a powerful open-source framework 
+	--> it is build applications using Large Language Models (LLMs) by integrating them 
+            with external tools, data sources, and workflows. 
+	-->It enables developers to create advanced AI applications, such as chatbots, 
+           RAG systems, and decision-making agents.
+	--> 
+
+		Core Components of LangChain:
+	--> it provides different type of splitter(eg. recursivecharactertextsplitter,tokentextsplitter,charactertextsplitter)
+	--> it can easily integrated with any LLM model and databases(chromadb,Faiss)
+	--> LLMs & Chat Models: Interface to interact with various LLMs (e.g., OpenAI, Google PaLM).
+	--> Prompts: Templates for generating consistent and context-aware responses.
+	--> Outoutparser - i want to see ouput in form of text or csv.
+	--> Chains: Sequences of operations connecting multiple components (e.g., prompt → model → output).
+	--> Agents: Decision-making entities that use LLMs to interact with tools (e.g., search engines, APIs).
+	--> Tools & Plugins: Access external tools (e.g., calculators, databases, vector stores).
+
+
+🔹 Tensorflow?
+
+ANS : 
+	--> TensorFlow is an open-source machine learning framework developed by 
+            Google. It’s widely used for building and deploying machine learning and deep learning models.
+	
+		Key Features of TensorFlow:
+	--> End-to-End ML Platform: Provides tools for data preprocessing, model building, training, evaluation, and deployment.
+	--> Versatile Models: Supports neural networks (CNNs, RNNs, transformers), reinforcement learning, and probabilistic models.
+	--> Scalability: Can train models on CPUs, GPUs, and TPUs across devices and clusters.
+
+		How TensorFlow Works:
+	--> Define a Computational Graph: Create a graph where nodes represent operations, and edges 
+            represent tensors (multi-dimensional arrays).
+	--> Build the Model: Define layers, loss functions, optimizers, and metrics.
+	--> Train the Model: Run computations using model.fit() for training with data.
+	--> Evaluate and Deploy: Evaluate using model.evaluate() and deploy using TensorFlow Serving, TensorFlow Lite, or TensorFlow.js.
+
+🔹 PyTorch?
+
+ANS :
+	--> PyTorch is an open-source deep learning framework developed by Facebook. 
+	--> It is widely used for building and training neural networks due to its flexibility,dynamic 
+             computation graph and strong support for Gpu acceleration.
+	--> Cuda support - GPU acceleration for faster computations using CUDA.
+			   Tensor can be moved to GPU using .to(device) or .cuda()
+        --> It is used for machine learning, computer vision, and natural language processing tasks.
+
+
+🔹 NLTK?
+
+ANS :
+	--> NLTK (Natural Language Toolkit) is a leading open-source library for Natural Language Processing (NLP) in Python.
+	--> It provides tools for text processing (tokenization, stemming, lemmatization, 
+             and part-of-speech (POS) tagging), and working with human language data.
+	--> Chunking and Parsing: Enables syntactic analysis, including chunking and context-free grammar (CFG) parsing.
+	--> Semantic Analysis: Tools for named entity recognition (NER), semantic role labeling, and more.
+	--> NLTK is ideal for learning NLP concepts, quick prototyping, and research but isn’t suited 
+            for high-performance production tasks. For industrial applications, libraries like 
+            SpaCy and Hugging Face Transformers are preferred.
+
+🔹 sklearn ?
+
+ANS :
+	--> scikit-learn (often imported as sklearn) is a popular Python library used for machine learning 
+            and data mining. It provides simple and efficient tools for data analysis and modeling.
+	
+	--> Supervised Learning Algorithms: For classification, regression, and support vector machines (SVM).
+	--> Unsupervised Learning Algorithms: For clustering, dimensionality reduction, and anomaly detection.
+	--> Model Evaluation: Provides metrics and tools for cross-validation, model selection, and performance evaluation.
+	--> Preprocessing: Tools for feature extraction, scaling, encoding, and transformation of data.
+	--> Model Tuning: Includes hyperparameter tuning methods like grid search and randomized search. 
+
+🔹 Agentic AI :
+
+ANS :
+	--> Agentic AI refers to AI systems designed to operate autonomously, make decisions, and 
+            perform tasks without constant human guidance. Unlike traditional AI.
+	-->  which follows predefined rules or requires explicit instructions, agentic AI can proactively pursue goals, adapt 
+               to changing environments, and make decisions based on real-time data.
+            
+		Key Characteristics of Agentic AI :
+	--> Autonomy: Acts independently to achieve specified goals.
+	--> Proactiveness: Anticipates needs and takes action without explicit prompts.
+	--> Adaptability: Learns and adjusts behavior based on new information.
+	--> Goal-Oriented: Optimizes actions to achieve defined objectives.
+
+		Examples in Real-World Applications:
+	--> Autonomous Vehicles: Navigate complex environments and make driving decisions in real-time.
+	--> Smart Personal Assistants (e.g., Siri, Alexa): Understand user context, perform tasks, and make recommendations.
+	--> Trading Bots: Analyze market data, predict trends, and execute trades automatically.
+
+🔹 AWS SageMaker
+
+ANS:
+	--> AWS SageMaker simplifies the entire machine learning workflow, including data 
+            preparation, model training, tuning, deployment, and monitoring. It’s designed for 
+            both beginners and experts in machine learning.
+
+		Key Features of segmaker :
+	--> Built-in Algorithms & Frameworks 
+	--> Pre-built algorithms (XGBoost, Linear Learner, BlazingText, etc.)
+	--> Supports popular frameworks (TensorFlow, PyTorch, MXNet, Scikit-Learn).
+
+
+🔹 Amazon S3 
+
+ANS:
+	--> Amazon S3 (Simple Storage Service) is a scalable, high-speed, web-based cloud storage service 
+            designed for object storage. It’s a core component of AWS and widely used for storing and retrieving 
+             any amount of data from anywhere on the web.
+
+C Aws Bedrock
+
+ANS :
+	--> It enables developers to build and scale generative AI applications without needing deep ML expertise.
+
+		Key Features of AWS Bedrock:
+	--> Offers a variety of models for text generation, chatbots, text summarization, Q&A, code generation, image generation, and more.
+	--> It is Cost-Effective & Flexible Pricing.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+						

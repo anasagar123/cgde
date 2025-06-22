@@ -1,0 +1,66 @@
+1.Write a Python function to reverse a string.
+2.Implement a function to check if a string is a palindrome.
+3.Write a Python function to find the factorial of a number.
+4.Implement a function to check if a number is prime.
+5.Write a Python function to find the nth Fibonacci number.
+6.Implement a function to check if a list is sorted in ascending order.
+7.Write a Python function to count the occurrences of a specific element in a list.
+8.Implement a function to remove duplicates from a list.
+9.Write a Python function to check if two strings are anagrams of each other.
+10.Implement a function to find the largest element in a list.
+11.Write a Python function to find the median of a list of numbers.
+12.Implement a function to merge two sorted lists into a single sorted list.
+13.Write a Python function to perform binary search on a sorted list.
+14.Implement a function to find the mode of a list of numbers.
+15.Write a Python function to find the GCD (Greatest Common Divisor) of two numbers.
+16.Implement a function to find the LCM (Least Common Multiple) of two numbers.
+17.Write a Python function to calculate the sum of digits in a number.
+18.Implement a function to check if a number is Armstrong number.
+19.Write a Python function to check if a given year is a leap year.
+20.Implement a function to calculate the square root of a number using Newton's method.
+21.Write a Python function to find the number of vowels and consonants in a string.
+22.Implement a function to generate all permutations of a string.
+23.Write a Python function to find the longest common prefix among an array of strings.
+24.Implement a function to check if a given string is a valid parentheses sequence.
+25.Write a Python function to generate the next palindrome after a given number.
+26.Implement a function to convert a decimal number to binary.
+27.Write a Python function to find the largest palindrome made from the product of two n-digit numbers.
+28.Implement a function to find the longest increasing subsequence in an array.
+29.Write a Python function to check if a given string is a valid palindrome or a valid palindrome     after removing at most one character.
+30.Implement a function to find the number of islands in a 2D matrix.
+31.Write a Python function to find the maximum sum subarray in a given array.
+32.Implement a function to find the minimum number of coins needed to make change for a given amount.
+33.Write a Python function to find all possible subsets of a set.
+34.Implement a function to find the missing number in a given integer array of 1 to n.
+35.Write a Python function to find the longest palindromic substring in a given string.
+36.Implement a function to check if a given graph is bipartite.
+37.Write a Python function to find the top k frequent elements in a given array.
+38.Implement a function to find the kth smallest element in a binary search tree.
+39.Write a Python function to implement a basic calculator to evaluate a simple expression string.
+40.Implement a function to find the shortest path in a maze using BFS.
+41.Write a Python function to implement a trie (prefix tree) data structure.
+42.Implement a function to merge k sorted arrays.
+43.Write a Python function to find the maximum product of two integers in an array.
+44.Implement a function to generate all possible valid IP addresses from a given string.
+45.Write a Python function to sort a stack using another temporary stack.
+46.Implement a function to find the celebrity in a party using stack.
+47.Write a Python function to implement binary search on rotated sorted array.
+48.Implement a function to reverse words in a given sentence without using any library method.
+49.Write a Python function to check if a given sudoku board is valid.
+50.Implement a function to serialize and deserialize a binary tree.
+51.Write a Python function to find all possible combinations of k numbers from a given n numbers.
+52.Implement a function to find the largest rectangle in a histogram.
+53.Write a Python function to implement counting sort algorithm.
+54.Implement a function to find the longest word in a dictionary that can be formed by deleting some characters of the given string.
+55.Write a Python function to find all valid permutations of parentheses for a given number n.
+56.Implement a function to find the minimum number of flights to visit all airports in a given list of flights.
+57.Write a Python function to implement the Sieve of Eratosthenes algorithm to find all prime numbers up to a given number n.
+58.Implement a function to find the shortest path in a weighted graph using Dijkstra's algorithm.
+59.Write a Python function to implement the Kadane's algorithm to find the maximum sum subarray in a given array.
+60.Implement a function to sort a linked list using merge sort algorithm.
+61.Write a Python function to implement the Longest Common Subsequence (LCS) algorithm.
+62.Implement a function to find the minimum number of swaps required to sort an array.
+63.Write a Python function to implement the Floyd-Warshall algorithm to find all pair shortest paths in a weighted graph.
+64.Implement a function to find the maximum sum of subarray with at least k elements in an array.
+65.Write a Python function to find the maximum size square sub-matrix with all 1s in a binary matrix.
+66.Implement a function to find

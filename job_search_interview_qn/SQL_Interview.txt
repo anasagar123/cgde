@@ -1,0 +1,136 @@
+	SQL(Structure Query Language)
+						----------------------------------------
+
+🔹DDL(data definition Language) - Create, alter, drop
+🔹DML(data manipulation language) - Insert,update,delete
+🔹DQL(data query language) - Select
+🔹DCL(data control language) - grant,revoke
+
+
+
+🔹Insert (add new records into a table)
+🔹update (for changing purpose)
+🔹Drop (Delete entire table)
+	(remove structure & data everything)
+
+🔹Delete (Delete specific rows)
+	  ( here i can use where condition)
+ 
+🔹Truncate (Delete all rows in a table but keep structure)
+	    (where condition cant allow)
+
+🔹				Constraints :
+	--> Not null (ensure a column can not be null)
+	--> Unique (all values in column are distinct)
+	--> Primary Key (uniquely identifies each row)
+	--> Foreign key (A column reference another table)
+	--> check (condition is met)
+	--> Default (assign a default value, if none is provided)
+
+🔹Like (pattern matching) (where name Like 'A%')
+🔹Distinct (unique)
+🔹Order (sort the result)
+🔹group by (group the rows based on a column)
+🔹Having (where keyword can not be used with aggregate function)
+	  (without group by cant use having cluase)
+
+
+🔹 		JOINS :
+	--> Joins are required when i need to retrive(Display) the data from more then one table.
+	 (i) Inner Join - Inner join gives the common record between the two tables.
+	   Eg.
+		Select table1.column1,table2.column2...
+		from table1
+		ineer join table2
+		on table1.common_field = table2.common_field
+
+	(ii) LEFT join -  The Sql left join returns all the values from the left table,matched values from 
+                          the right table or null in case no matching.
+
+	(iii) Right join - It will returns all the values from the right table plus match from the left 
+                           table or null in case no matching.
+	(iv) Full join - It will combine the both left and right join then give result.
+	(v) Cartessian join(Cross join) - A CROSS JOIN in SQL returns the Cartesian product of two tables.
+					- it combines every row from the first table with every row from the second table. 
+					  The result set has a size equal to the product of the number of rows in each table.
+	EG.
+	SELECT emp_name, dept_name
+	FROM Employees
+	CROSS JOIN Departments;
+
+	(vi) Self join - self join is used to join a table to itself.
+
+
+🔹				CLAUSE :
+	--> Union - combine the result of two or more select statement without returning any duplicate rows.
+	--> Union All - combine the result of two select statement including duplicate rows.
+	--> Intersection - common records between the two select statement.
+	--> Except - All the column from emp and not from the emp_sal.
+
+🔹 	    Indexes :
+	--> Indexes through fetch the data fastly.
+
+🔹			Views :
+	--> View is a virtual tabel.
+	--> Simplify Complex Queries: Store complex joins and calculations.
+	--> Data Security: Restrict access to sensitive data by exposing only specific columns.
+	--> Reusability: Query the view instead of repeating SQL logic.
+	--> Logical Data Independence: Abstract database schema changes.
+
+
+🔹 		Sub Queries 
+
+ANS:
+	--> A Subquery or Inner query or Nested query is a query within another SQL
+    	    query, and embedded within the WHERE clause.
+
+	-> A subquery is used to return data that will be used in the main query as a
+           condition to further restrict the data to be retrieved.
+	
+
+🔹 	RANK FUNCTION - This is used to assign the rank to each row.
+
+	select RANK() over (ORDER BY MARKS DESC) 'POSITION', * from STU_MARKS;
+
+	EXAMPLE :-
+
+	SELECT MARKS,RANK() OVER (ORDER BY MARKS DESC) AS POSITION FROM STUDENT;
+
+
+🔹		DENSE_RANK FUNCTION - This is used to assign the rank to each row without skipping the rank.
+
+		select DENSE_RANK() over (ORDER BY MARKS DESC) 'POSITION', * from STU_MARKS;
+
+	EXAMPLE :-
+
+	SELECT MARKS,DENSE_RANK() OVER (ORDER BY MARKS DESC) AS POSITION1 FROM STUDENT;
+
+🔹 	ROW_NUMBER FUNCTION - This is used to add the row no to each row.
+
+	select row_number() over (ORDER BY MARKS DESC) 'ROWNO', * from STU_MARKS;
+	
+	EXAMPLE :-
+
+	SELECT MARKS,ROW_NUMBER() OVER (ORDER BY MARKS DESC) AS POSITION2 FROM STUDENT;
+
+
+
+
+	
+
+ 
+		
+	
+
+
+
+
+
+
+
+
+		
+
+
+
+

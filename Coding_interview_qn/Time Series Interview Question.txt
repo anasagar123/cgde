@@ -1,0 +1,115 @@
+			Time Series Forecasting Question :
+        ----------------------------------------------------------------------
+(1) Time Series Forecasting ?
+------> Time Series Forecasting means future Prediction of events through a Sequence of Time.
+
+(2) Things to be followed while working on Time Series Analytics & Forecasting?
+	(i) Every data should be numeric in nature, not in categorical
+	(ii) Data type - one column would be datetime and second would be target variable, Both should be numeric type and datetime column make as a index
+	(iii) Data should be in a Sequential order (TimeSeries always in an ascending order)
+	(iv)  There should be not be any missing data in TimeSeries Forecasting. If yes, first Impute the missing data and then try Time Series Forecasting.
+        ----> No Missing data is allowed in TimeSeries Forecasting as data is in order.
+        ----> It is simply not Possible to shift the series to fill the gap.
+	(v) Before building TimeSeries Forecasting, we have to check data component - Trend/Seasonality/error(Irregular)
+         ---> Through Decomposition(Visualization) we have to check the data is Trend/Seasonality/error(Irregular)
+  
+
+(3) Smoothing/Neural Network data/ Naive Forecast?
+----->  A Series with no Trend or no Seasonality that means Smoothing data.
+----->  We have to solve Smoothing data by the help of moving average method.
+
+    (i) Winter's model/1960/single exponential smoothing
+      --> No Trend & No Seasonality
+
+    (ii) Holt's model(double exponential smoothing model) :-
+     ---> Here Trend but no Seasonality
+
+    (iii) Winter & Holt's model/Multiple exponential smoothing
+     ---> Here Trend & Seasonality
+
+(4) Component of Time Series ?
+
+	(i) Trend(Long Term movement) :
+          --> More then a year
+          --> deonted by T
+          --> When the series increases or decreases over the length of time
+
+      (ii) Seasonality(St) - short time - 1 year
+          ---> It reflects upward & downward  movement over a time period. like AC price, Ice cream price etc
+
+      (iii) Cyclicity(Ct) - It looks like the same as seasonality only difference is it is more then a year.
+
+      (iv) Irregular/Random/Noisy - We can't Predict. like earth quake, Terroist attack etc
+
+(5) Time Series Forecasting Algorithms ?
+---->(i) ARIMA (Auto Regressive Integrated Moving Average)
+         ARIMAX(Auto Regressive Integrated Moving Average with external factor)
+     (ii) SARIMA (Seasonality Auto Regressive Integrated Moving Average)
+     (iii) AR - Auto Regressive
+     (iv)  Winter's model/1960/single exponential smoothing
+     (v)   Holt's model(double exponential smoothing model)
+     (vi)   Winter & Holt's model/Multiple exponential smoothing   etc...
+
+(6) Explain ARIMA MODEL?
+-----> Arima model Stands for Auto Regressive Integrated moving average model.
+-----> Before Building the ARIMA MODEL, we have to check our data is Stationary or not.
+-----> ARIMA Model Based on Three Parameter(p,d,q) :
+        p = Partial AutoCorrelation = Calculate by Auto Regressive method
+        d = difference value(Stationary)
+         Rule :- Time series Forecasting we can predict only when data is Stationary.
+    Q.  How we know data is Stationary or not?
+        ---> By Integrated method
+
+      q = AutoCorrelation
+      ---> Algorithm = moving average
+
+     pdq =Auto Regressive Integrated  moving average
+
+(7) Holt Winters vs Arima Model?
+	
+	Holt Winters                  			ARIMA MODEL
+ --> data is type of Trend & Seasonality              -----> Before Building the Arima model we have to make data Stationary
+---> Holt Winters Model is easy to use and            -----> ARIMA model based on three parameter
+     easy to repeat for several period                        P = Partial Autocorrelation
+  							      d = difference value
+							      q =  AutoCorrelation
+
+(8) Why do we need to make our data stationary only in ARIMA?
+---> because we have to check mean value will be constant,variance and Standard deviation will be constant.
+---> Stationary means,data is statically significant(alternative hypothesis)
+----> If P <=0.05, means my data is alternative hypothesis testin
+----> Method to check data is Stationary or not - "Augmented Dickey Fuller Test"
+
+(9) What are the different ways to make our data stationary?
+----> The most common would be Differencing(one level or seasonal differencing)
+
+(10) What method can be used on Non Stationary Data?
+---> Winter's model/1960/single exponential smoothing
+      --> No Trend & No Seasonality
+
+(11) Test for Stationarity in ARIMA model?
+-----> Augmented Dickey-Fuller (ADF) test
+
+(12) Explain Autocorrelation, ACF and PACF in Time series Analysis?
+
+
+
+
+
+(13) Error metrics for time series?
+-----> Root Mean Square Error (RMSE), Mean Square Error (MSE), Percentage Error (MPE), andMean Absolute Percentage Error (MAPE).
+
+(14) Multivariate Time Series Model?
+----> Random Forest, VAR, LSTM
+
+(15) Time Series vs Regression?
+-----> The biggest difference is that time series regression accounts for the autocorrelation between time events, which always exists.
+
+
+
+
+
+
+
+
+			 

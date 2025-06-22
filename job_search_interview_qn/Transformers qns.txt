@@ -1,0 +1,74 @@
+🔹 What is Transformer Model?
+ANS :
+	---> Transformer Model is a Neural network aechitecture.
+	---> It can process all the words Prarllely.
+	---> It can handle long sentence dependencies.
+
+		Two main component in Transformer Model
+	(i) Encoder - it will understand the context like bert, distel bert etc.
+	(ii)Decoder - it will generate the context like Gpt, Llama,gemini etc.
+
+		Encoder and Decoder Consists :
+	---> Multi head self attention mechanism  - Multihead self attention enables the 
+             model to learn multiple relationship simultaneously for improving the accuracy.
+
+	---> Feed forward Network(FFN) - Fully connected mlp layer applied seperately to each position.
+                                       - Process the output for better understanding.
+
+	---> Layer Normalization  - Speed up training
+                                  - prevent vanishing gradient descent problem.
+
+🔹 What is attention in Transformers?
+	---> Attention mechanism that allows the model to dynamically focus on different parts of the input sequence.
+	---> it is used for encoder-decoder model(traditional models- Lstm,RNN,GRU etc)
+	---> traditional models is sequential model.
+	---> traditional models can handle till 30 words, it can not handle long sentence dependencies.
+
+  What is self-attention mechanism in Transformers? What problem does it solve?
+	---> self attention is a mechanism.
+	---> it can capturte only one type of word relationship, it can not capture any neighbour 
+     		word relationship,subject object, verb object, any semantic relationship between two words.
+
+		How it works:
+	for each word in a sentence,it will create three vectors.
+	Q(Query) - what information the model is trying to extract.
+	K(Key) - it will give key point, the context or feature that model can pay attention.
+	V(Value) -  Actual information it give.
+
+	Summary of how it will work.
+	--> if any sentence is there, for each word in a sentence,i will create three vectors Q, K and V. 
+            then each words query compares with every words key through the attention score. which word is 
+            important, according to that important word our model can pay attention then it will generate result. 
+
+		What problem does it solve. 
+	--> it can handle long sentence dependencies.
+	--> its will process all the words parallely.
+
+🔹 What is multihead self-attention mechanism in Transformers?
+ANS :
+	---> Multihead self-attention enables the model to learn multiple relationship simultaneously for improving the accuracy.
+	  Example :
+			THE CAT SAT ON THE MAT
+		Head 1 - might focus subject-object relationship : "cat" -> "mat"
+		Head 2 -             verb-object                 : "sat" -> "mat"
+		Head 3 -             positional dependencies     : "on"  -> "mat"			
+		Head 4 - it can check other relationship also like semantic, syntax etc.
+
+🔹 Feed forward Network(FFN) ?
+ANS :
+	---> Fully connected MLP layer applied seperately to each position.
+	---> Process the output for better understanding.
+
+🔹Layer  Normalization ?
+ANS 
+	---> Speeds up training
+	---> Prevent vanishing/exploding gradient.
+
+🔹 Positional Encoding?
+ANS :
+		---> it is a vector.
+		---> it is added to the input embedding to give each word a unique position-based context.
+
+
+
+     

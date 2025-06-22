@@ -1,0 +1,291 @@
+			 RAG BASED PROJECT
+                     -------------------------		
+
+I developed a Retrieval-Augmented Generation (RAG) system that fetch real-time insights from ICICI bank documents 
+   and OLA Electric vehicle specifications.The main goal of this project was to provide if users will ask any questions our chatbot will 
+   give the response for better financial and purchasing decisions.".
+
+2️⃣ Task: What Was Your Role?
+💬 "I was responsible for designing and implementing the RAG pipeline, ensuring that retrieved 
+       documents were contextually relevant and responses were generated accurately using an LLM. 
+       My role included data preprocessing, embedding generation, vector search optimization, and LLM integration."
+
+3️⃣ Action: How Did You Implement It?
+🔹 Data Preprocessing & Document Handling
+Extracted text from PDFs, scanned documents, and websites using PyMuPDF, Tesseract OCR, and BeautifulSoup.
+Cleaned and segmented large documents using text chunking techniques to improve retrieval efficiency.
+
+🔹 Embedding & Vector Search for Retrieval
+Converted document text into vector embeddings using Sentence-BERT, OpenAI, or Google PaLM embeddings.
+Stored embeddings in FAISS/ChromaDB for efficient semantic search.
+Implemented BM25 + Dense Retrieval (Hybrid Search) to improve document matching accuracy.
+
+🔹 LLM Integration & Response Generation
+Used LLMs like GPT-4, LLaMA, Falcon to generate contextual answers from the retrieved data.
+Fine-tuned prompt engineering techniques to ensure high-quality, fact-based responses.
+
+   CHALLENGES :
+ ------------------
+Q. One major challenge was ensuring the retrieved documents were contextually relevant. 
+Ans : Initially, keyword-based searches often led to irrelevant results. To solve this, I optimized the vector search 
+embedding model and combining it with  BM25 ranking approach. 
+
+Q. Another challenge was latency due to large document sizes.
+Ans : which I resolved using document chunking and caching mechanisms."
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+			SENTIMENT ANALYSIS		
+
+2. 1️⃣ Situation: The Problem Statement
+💬 "Businesses receive a huge volume of customer reviews, social media feedback, and support tickets daily. 
+Manually analyzing this data is inefficient and time-consuming. To solve this, I developed a sentiment 
+analysis system using BERT and DistilBERT to automatically classify text into positive, negative, and 
+neutral categories, enabling businesses to derive meaningful insights from customer feedback in real time."
+
+2️⃣ Task: What Was Your Role?
+💬 "I was responsible for designing the end-to-end sentiment analysis pipeline, which involved 
+    data preprocessing, model selection, fine-tuning transformer models and optimizing 
+     performance for real-time analysis."
+
+3️⃣ Action: How Did You Implement It? 
+
+🔹 Data Preprocessing : (missing value, Imbalance data, max number counts for each sentiment,Convert ratings to Positive, Negative, Neutral)
+🔹 Initialize tokenizer for bert and distil bert (used tokenizer for bert and distil bert)
+---- tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+🔹 Split the data into train and test
+🔹 Apply Tokenizer on text data
+     ---- def tokenize_function(examples):
+          return tokenizer(examples["content"], padding="max_length",
+           truncation=True)
+🔹Convert pandas dataframe to datasetdictionary(because pandas dataframe is not directly compatiable with huggingFace Transformers)
+🔹Loads pre trained bert model for 3-class classification (+ve, -ve, Neutral)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME, num_labels=3)
+) 
+🔹 Apply LoRA Configuration
+
+	pip install transformers datasets accelerate peft torch scikit-learn
+	# LoraConfig → This is a class from the peft (Parameter-Efficient Fine-Tuning) library that allows us to define LoRA parameters.
+	lora_config = LoraConfig(
+    	r=8,                 	# LoRA rank
+    	lora_alpha=16,       	# Scaling factor
+    	target_modules=["query", "value"],  # Apply LoRA to attention layers
+    	lora_dropout=0.1,
+    	bias="none",
+	)
+
+🔹Apply LoRA to BERT Model
+	
+	lora_model = get_peft_model(model, lora_config)
+
+
+🔹 Define Training Arguments (batch size, learning rate, epochs,dropout etc)
+training_args = TrainingArguments(
+    output_dir="./results",
+    evaluation_strategy="epoch",
+    save_strategy="epoch",
+    logging_dir="./logs",
+    per_device_train_batch_size=8,
+    per_device_eval_batch_size=8,
+    num_train_epochs=3,
+    weight_decay=0.01
+)
+
+🔹Train the Model (fine-tuning):
+
+trainer = Trainer(
+    model=lora_model,
+    args=training_args,
+    train_dataset=train_dataset,
+    eval_dataset=test_dataset,
+    tokenizer=tokenizer
+)
+
+trainer.train()  # This is where the fine-tuning happens
+
+🔹then evaluate accuracy, precision, recall, and F1-score.
+
+from sklearn.metrics import accuracy_score, f1_score
+def compute_metrics(pred):
+    labels = pred.label_ids
+    preds = pred.predictions.argmax(-1)
+    acc = accuracy_score(labels, preds)
+    f1 = f1_score(labels, preds, average="weighted")
+    return {"accuracy": acc, "f1": f1}
+
+# Evaluate the model
+results = trainer.evaluate()
+print("Evaluation Results:", results)
+
+🔹Load Lora fine-tuned model
+	trainer.save_model("./lora_sentiment_model")
+	tokenizer.save_pretrained("./lora_sentiment_model")
+
+🔹Load Model for prediction
+
+	from transformers import pipeline
+	sentiment_pipeline = pipeline("text classification",model="./lora_sentiment_model", tokenizer=tokenizer)
+	review = "This product is terrible! It stopped working in a week."
+	prediction = sentiment_pipeline(review)
+	print("Predicted Sentiment:", prediction)
+
+  
+3️⃣ CHALLENGES :
+
+1. Imbalance dataset :
+Solution : use smote technique, stratify)
+
+2. Computational Resources( fine-tuning Pre-trained transformer models require significant computational resources, like gpu power and memory)
+SOLUTION : Model Optimization ( Used DistilBert, bert training time is high is epochs use more training time will be increased)
+
+3.OOV (some time our model may not have seen certain word or phrases in the dataset which can lead poor performance)
+SOLUTION : To handle OOV words, the pre-trained models can be fine-tuned on a dataset.
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+------------
+					Power BI Dashboard for Financial Metrics
+                                    -------------------------------------------------
+1️⃣ Situation: The Problem Statement
+
+• Developed a Power BI dashboard and SQL queries to analyze key financial metrics like total funded amount, received amount, profit, 
+  interest rates, and loan quality.
+• Designed interactive visualizations to track financial trends and insights for better decision-making.
+• Ensured data accuracy by validating Power BI outputs against SQL query results.
+
+2️⃣ Task: What Was Your Role?
+
+Wrote SQL queries to extract data on key financial metrics (funded amount, received amount, profit, interest rates, and loan quality).
+Designed interactive visualizations in Power BI to track financial trends, KPIs, and insights.
+Ensured data accuracy by validating Power BI outputs against SQL query results.
+
+CHALLENGES :-
+i checked any missing value is there or not and also checking duplicate value. some times 
+because of duplicate not matching the sql output with power bi result.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+							Time Series Forecasting
+                                                     --------------------------------
+--> Time series Analysis is a statistical technique used to analyze and forecast data that varies over the time.
+--> It helps in identifying trends,patterns,seasonality and forecasting future values.
+-> Real world application (stock price,sales,weather) 
+
+
+		The Problem Statement :
+ 	--> Developed a monthly sales forecasting where i used SARIMA and 
+            Random Forest model. i checked external factors such as weather, holidays, and promotions 
+            to improve model accuracy, after that i got 91% accuracy for bette optimization.
+
+		RESPONSIBILITY :
+
+	--> I was Responsibile for data preprocessing part : 
+             Like --> i was checking every data is in numeric nature or not
+		  -->then i was checking one column is in datetime format and other is target, 
+                  and bith should be in numeric type or not.
+		  --> data is in sequential order(ascending order not not)
+		  --> handling missing value 
+		  --> before building the time series forecasting, i was checking data component- trend/seasonality through 				              decomposition(visualization)
+		  --> checking durbin watson test
+		  --> then checking data is stationary or not, if not then i was trying 
+                      to make stationary through augmented dickey fuller test.
+		  --> finding p(through pacf visualization),d,q(through acf visualizationS)
+			p-partial autocorrelation or autoregressive method
+			d-difference(log function)
+			q-autocorrelation or moving avg method
+		  --> after that i was trying to build sarima model.
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			NAME ENTITY RECOGNIZATION :
+             	   ------------------------------------
+"Many industries, such as finance, healthcare, and e-commerce, deal with large amounts of unstructured text (emails, contracts, customer reviews, etc.). Extracting key information like names, organizations, locations, and dates manually is time-consuming. To automate this process, I implemented a Named Entity Recognition (NER) system using a pre-trained BERT model."
+
+2️⃣ Task: What Was Your Role?
+💬 "I was responsible for designing and implementing the NER pipeline, selecting the model, optimizing the entity extraction process, and ensuring accurate classification of entities from text."
+
+3️⃣ Action: How Did You Implement It?
+
+🔹Data  Preprocessing
+Collected unstructured text data from emails, contracts, and financial reports.
+Cleaned the data using NLTK and SpaCy (Tokenization,removing special characters, lowercasing, and Lemmatization,stopwords).
+
+🔹 Model Selection & Training
+Used BERT-based NER model ("dbmdz/bert-large-cased-finetuned-conll03-english") pre-trained on CoNLL-03 dataset.
+Fine-tuned it on domain-specific data to recognize industry-specific entities (e.g., product names in e-commerce, drug names in healthcare).
+
+🔹 Entity Recognition & Post-Processing
+Extracted entities categorized as Person, Organization, Location, and Date.
+Merged broken subwords using tokenization post-processing techniques.
+
+4️⃣ Challenges & How You Solved Them
+1. "One of the key challenges was handling subword tokenization, where words were broken into smaller pieces (e.g., ‘New’ and ‘York’ being treated separately). 
+SOLUTION : I addressed this by applying post-processing techniques to merge fragmented tokens back into meaningful entities. 
+2. BERT is trained on general datasets,if i want to improve accuracy used fine-tuned.?
+SOLUTION :  I fine-tuned the model on domain-specific data to improve accuracy for industry-specific entities."
+
+
+

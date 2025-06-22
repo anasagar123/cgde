@@ -1,0 +1,70 @@
+   	TABLEAU :-
+-------------------------
+-> Tableau is a visual analytical tool to present the large complex data into the readabale & understandable format.
+-> Now daya widely use tableau.
+-> Tableau is Automatically created(like bar chart,pie chart,line chart etc).Because Tableau works on Visualization Query Language(it means by default create the best possible visual depending upon the dimension and major you have selected)
+-> 
+
+
+		WHY TABLEAU ?
+         -------------------------
+-> speed
+-> user Friendly
+-> Eye-catching and interactive Dashboards
+-> Direct Connection
+-> Easy Publishing and Sharing
+-> Growing Market
+
+
+		TABLEAU PRODUCTS :-
+	 ------------------------------------
+-> TABLEAU DESKTOP - TO create the visualizations
+-> TABLEAU PUBLIC  - A free version to create interactive visualizations.
+-> TABLEAU ONLINE  - Cloud Platform to share the visualizations.
+-> TABLEAU SERVER  - To share the visualizations with the people in the organization.
+-> TABLEAU READER  - To view visualizations created in Tableau can not edit.
+-> TABLEAU PREP    - Used for cleaning the data  
+
+
+--------------------------------------------------------------------------------------------------
+			POINT :-
+                      ---------------
+
+-> If we will take the Measure first and then the Dimension, It will always give you the graphical views.
+
+-> If we will take the Dimension first and then the Measure, It will always give you the Tabular views.
+
+-----------------------------------------------------------------------------------------------------------
+
+
+	THERE ARE THREE BASIC STEPS INVOLVED IN CREATING ANY TABLEAU REPORT.
+
+-> Connect to a data source − It involves locating the data and using an
+      appropriate type of connection to read the data.
+
+-> Choose dimensions and measures − This involves selecting the required
+    columns from the source data for analysis.
+
+-> Apply visualization technique − This involves applying required
+    visualization methods, such as a specific chart or graph type to the data
+    being analyzed.
+
+---------------------------------------------------------------------------------------------------------------
+
+			TABLEAU DATA TYPES :-
+                    -----------------------------
+
+		THERE ARE 6 DATA TYPES IN TABLEAU:
+
+1. Number (#)
+2. String / Text (ABC)
+3. Date ( )
+4. Geographic ( )
+5. Boolean (True / False)
+6. DATE & TIME
+
+---------------------------------------------------------------------------------------------------
+
+		Hirearchie :
+            --------------------
+-> In Tableau Date field gives you a Auto Hierarchie.
